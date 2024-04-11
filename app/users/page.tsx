@@ -4,6 +4,7 @@ import React from 'react'
 interface User {
   id: number;
   name: string;
+  email: string;
 }
 
 const UsersPage = async () => {
@@ -24,11 +25,26 @@ const users: User[] = await res.json()
 
   <h1>Users</h1>
 
-  <ul>
+  <table className='table table-boardered'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
 
-  {users.map(user => <li key={user.id}>{user.name}</li>)}
+    <tbody>
+
+  {users.map(user => <tr key={user.id}>
+    <td>{user.name}</td>
+    <td>{user.email}</td>
+    </tr>)}
+
+
+    </tbody>
+
   
-  </ul>
+  </table>
   
 
     </>
